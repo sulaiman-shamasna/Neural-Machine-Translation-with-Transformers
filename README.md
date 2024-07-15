@@ -75,6 +75,8 @@ To work with this project, follow these steps:
     - Having done this, a ```port:IP``` will appear in the shell, either press on it + ctrl or open a browser and paste it, it should look like this:
         - ``` http://localhost:6006/```
 
+**Tokenizer**
+![Tokenizer](https://github.com/sulaiman-shamasna/Neural-Machine-Translation-with-Transformers/blob/main/images/tokens.jpeg)
 
 ## References
 - [Neural machine translation with a Transformer and Keras](https://www.tensorflow.org/text/tutorials/transformer).
