@@ -75,6 +75,9 @@ To work with this project, follow these steps:
     - Having done this, a ```port:IP``` will appear in the shell, either press on it + ctrl or open a browser and paste it, it should look like this:
         - ``` http://localhost:6006/```
 
+**Tensorboard Result**
+![Tensorboard](https://github.com/sulaiman-shamasna/Neural-Machine-Translation-with-Transformers/blob/main/images/tensorboard.png)
+
 **Tokenizer**
 ![Tokenizer](https://github.com/sulaiman-shamasna/Neural-Machine-Translation-with-Transformers/blob/main/images/tokens.jpeg)
 
