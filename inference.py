@@ -49,25 +49,16 @@ class Translator(tf.Module):
     attention_weights = self.transformer.decoder.last_attn_scores
 
     return text, tokens, attention_weights
-  
-def print_translation(sentence, tokens, ground_truth):
-  print(f'{"Input:":15s}: {sentence}')
-  print(f'{"Prediction":15s}: {tokens.numpy().decode("utf-8")}')
-  print(f'{"Ground truth":15s}: {ground_truth}')
 
 
-def plot_attention_head(in_tokens, translated_tokens, attention):
-  # The model didn't generate `<START>` in the output. Skip it.
-  translated_tokens = translated_tokens[1:]
+class ExportTranslator(tf.Module):
+  def __init__(self, translator):
+    self.translator = translator
 
-  ax = plt.gca()
-  ax.matshow(attention)
-  ax.set_xticks(range(len(in_tokens)))
-  ax.set_yticks(range(len(translated_tokens)))
+  @tf.function(input_signature=[tf.TensorSpec(shape=[], dtype=tf.string)])
+  def __call__(self, sentence):
+    (result,
+     tokens,
+     attention_weights) = self.translator(sentence, max_length=MAX_TOKENS)
 
-  labels = [label.decode('utf-8') for label in in_tokens.numpy()]
-  ax.set_xticklabels(
-      labels, rotation=90)
-
-  labels = [label.decode('utf-8') for label in translated_tokens.numpy()]
-  ax.set_yticklabels(labels)
+    return result
